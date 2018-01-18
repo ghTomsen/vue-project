@@ -1,19 +1,21 @@
 <template>
 
-  <div class="login">
-    <h3>管理员登录</h3>
-    <el-form :rules="rules" ref="ruleForm" label-position="left" label-width="80px" :model="formLabelAlign">
-      <el-form-item label="用户名：" prop="uname">
-        <el-input v-model="formLabelAlign.uname"></el-input>
-      </el-form-item>
-      <el-form-item label="密码：" prop="upwd">
-        <el-input type="password" v-model="formLabelAlign.upwd"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
-        <el-button class="aa" @click="resetForm('ruleForm')">重置</el-button>
-      </el-form-item>
-    </el-form>
+  <div class="wrap">
+    <div class="login">
+      <h3>管理员登录</h3>
+      <el-form :rules="rules" ref="ruleForm" label-position="left" label-width="80px" :model="formLabelAlign">
+        <el-form-item label="用户名：" prop="uname">
+          <el-input v-model="formLabelAlign.uname"></el-input>
+        </el-form-item>
+        <el-form-item label="密码：" prop="upwd">
+          <el-input type="password" v-model="formLabelAlign.upwd"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
+          <el-button class="aa" @click="resetForm('ruleForm')">重置</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
   </div>
 
 </template>
@@ -60,7 +62,10 @@
 
 
             this.$alert("登录成功");
-            this.$router.push({ name: "admin" })
+            // console.log(this.$route.query.nextPage);
+            var nextPage=this.$route.query.nextPage;
+            // this.$router.push({ name: "admin" })
+            this.$router.push({path:nextPage?nextPage:'/admin'})
           } else {
             this.$alert("登录失败");
           }
@@ -82,10 +87,14 @@
   }
 </script>
 <style scoped>
-  .aa{
+  .wrap{
+    background-color: skyblue;
+  }
+  .aa {
     color: white;
     background-color: #409EFF;
   }
+
   .login {
     width: 600px;
     height: 300px;
@@ -99,7 +108,8 @@
     /* left: 50%;
     transform: translateX(-50%); */
   }
-  h3{
+
+  h3 {
     color: white;
     text-align: center;
     font-size: 30px;
@@ -107,9 +117,8 @@
     left: 50%;
     transform: translateX(-50%);
     position: absolute;
-    
+
   }
 </style>
 <style>
-  
 </style>

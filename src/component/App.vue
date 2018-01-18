@@ -6,7 +6,7 @@
 <style scoped>
  div{
    height:100%;
-   background-color: skyblue;
+   /* background-color: skyblue; */
  }
 </style>
 <script >
